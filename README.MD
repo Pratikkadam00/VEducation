@@ -8,6 +8,13 @@ Welcome to the Virtual Education LMS Platform! This web application provides a s
 
 This is a virtual education LMS (Learning Management System) platform that allows educators and learners to engage in online education. Our platform is designed to provide a secure and user-friendly environment for a seamless learning experience.
 
+## Technology used
+
+MERN Stack.
+Front-End : JavaScript, React, Next
+Back-End : Node, Express
+Database : mongoDb
+
 ## Key Features
 
 - **Secure Learning Environment:** We prioritize the security and privacy of all users. Rest assured that your data and interactions are protected.
