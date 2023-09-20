@@ -1,6 +1,6 @@
 # VEducation
 
-### Virtual Education LMS Platform
+## Virtual Education LMS Platform
 
 Welcome to the Virtual Education LMS Platform! This web application provides a secure environment for online learning. Whether you're an educator looking to create courses or a student eager to expand your knowledge, this platform is designed to meet your needs.
 
