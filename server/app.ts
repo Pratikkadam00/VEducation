@@ -6,10 +6,8 @@ import cors from "cors";
 import { ErrorMiddlewareHandler } from "./middleware/error";
 import userRouter from "./routes/user.route";
 
-app.use(express.json());
-
 //body parser
-// app.use(express.json({ limit: "50mb" }));
+app.use(express.json());
 
 //cookie parser
 app.use(cookieParser());
