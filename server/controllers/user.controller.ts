@@ -127,3 +127,5 @@ export const activateUser = catchAsyncError(
     }
   }
 );
+
+// Login user
