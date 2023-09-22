@@ -129,3 +129,36 @@ export const activateUser = catchAsyncError(
 );
 
 // Login user
+interface ILoginRequest {
+  email: string;
+  password: string;
+}
+
+export const loginUser = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { email, password } = req.body as ILoginRequest;
+
+      //if email and password is not filled
+      if (!email || !password) {
+        return next(new ErrorHandler("Please enter and password", 400));
+      }
+
+      const user = await userModel.findOne({ email }).select("+password");
+
+      // if the email is wrong or the email/user is not exist
+      if (!email) {
+        return next(new ErrorHandler("Invalid email", 400));
+      }
+
+      const isPasswordMatch = await user?.comparePassword(password);
+
+      // if the password do not match
+      if (!email) {
+        return next(new ErrorHandler("Invalid password", 400));
+      }
+    } catch (error: any) {
+      return next(new ErrorHandler(error.message, 400));
+    }
+  }
+);

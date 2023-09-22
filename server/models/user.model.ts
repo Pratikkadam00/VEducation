@@ -18,7 +18,7 @@ export interface IUser extends Document {
   courses: Array<{ courseId: string }>;
   comparePassword: (password: string) => Promise<boolean>;
   SignAccessToken: () => string;
-  SignRequestToken: () => string;
+  SignRefreshToken: () => string;
 }
 
 const userSchema: Schema<IUser> = new mongoose.Schema(
@@ -86,7 +86,7 @@ userSchema.methods.SignAccessToken = function () {
 };
 
 //sign in refresh token
-userSchema.methods.SignRequestToken = function () {
+userSchema.methods.SignRefreshToken = function () {
   return jwt.sign({ id: this._id }, process.env.REFRESH_TOKEN || "");
 };
 
