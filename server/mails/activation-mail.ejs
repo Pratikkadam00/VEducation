@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Virtual Education</title>
+    <style>
+      /* Base styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .header {
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+      }
+      .system-message {
+        font-size: 12px;
+        color: #888;
+        margin: 0;
+      }
+      .content {
+        background-color: rgb(200, 255, 198);
+        padding: 20px;
+        text-align: center;
+      }
+      .welcome-heading {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: rgb(247, 80, 219);
+      }
+      .message-box {
+        border: 2px solid #1a6cb9;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .greeting {
+        font-size: 16px;
+      }
+      .activation-code {
+        font-size: 18px;
+      }
+      .activation-instructions {
+        font-size: 14px;
+      }
+      .contact-info {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <p class="system-message">
+          This is a system-generated email. Please do not reply.
+        </p>
+      </div>
+      <div class="content">
+        <h1 class="welcome-heading">Welcome to VEducation</h1>
+        <div class="message-box">
+          <p class="greeting">Hello <%= user.name%>,</p>
+          <p class="activation-instructions">
+            Thank you for registering with VEducation.
+          </p>
+          <p class="activation-code">
+            Your activation code is: <strong><%= activationCode %></strong>
+          </p>
+          <p class="activation-instructions">
+            Please use this code for activation. It will expire in 5 minutes.
+          </p>
+          <p class="activation-instructions">
+            If you did not register for VEducation, please ignore this email.
+          </p>
+        </div>
+        <p class="contact-info">
+          If you have any queries, please email us at
+          <a href="mailto:pk@gmail.com">pk@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -4,9 +4,12 @@ const app = express();
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { ErrorMiddlewareHandler } from "./middleware/error";
+import userRouter from "./routes/user.route";
+
+app.use(express.json());
 
 //body parser
-app.use(express.json({ limit: "50mb" }));
+// app.use(express.json({ limit: "50mb" }));
 
 //cookie parser
 app.use(cookieParser());
@@ -17,6 +20,9 @@ app.use(
     origin: process.env.ORIGIN,
   })
 );
+
+//routes
+app.use("/api", userRouter);
 
 //testing api
 app.get("/test", (req: Request, res: Response, next: NextFunction) => {
