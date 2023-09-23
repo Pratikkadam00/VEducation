@@ -166,3 +166,19 @@ export const loginUser = catchAsyncError(
     }
   }
 );
+
+export const logOutUser = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.cookie("access_token", "", { maxAge: 1 });
+      res.cookie("refresh_token", "", { maxAge: 1 });
+
+      res.status(200).json({
+        success: true,
+        message: "Logged out Successfully",
+      });
+    } catch (error: any) {
+      return next(new ErrorHandler(error.message, 400));
+    }
+  }
+);
