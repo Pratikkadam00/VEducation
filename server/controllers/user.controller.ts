@@ -7,6 +7,7 @@ require("dotenv").config();
 import ejs from "ejs";
 import path from "path";
 import sendMail from "../utils/sendMail";
+import { sendToken } from "../utils/jwt";
 
 //register user
 interface IRegistrationBody {
@@ -139,24 +140,27 @@ export const loginUser = catchAsyncError(
     try {
       const { email, password } = req.body as ILoginRequest;
 
-      //if email and password is not filled
+      // If email and password are not filled
       if (!email || !password) {
-        return next(new ErrorHandler("Please enter and password", 400));
+        return next(new ErrorHandler("Please enter email and password", 400));
       }
 
       const user = await userModel.findOne({ email }).select("+password");
 
-      // if the email is wrong or the email/user is not exist
-      if (!email) {
+      // If the email is wrong or the user does not exist
+      if (!user) {
         return next(new ErrorHandler("Invalid email", 400));
       }
 
-      const isPasswordMatch = await user?.comparePassword(password);
+      const isPasswordMatch = await user.comparePassword(password);
 
-      // if the password do not match
-      if (!email) {
+      // If the password does not match
+      if (!isPasswordMatch) {
         return next(new ErrorHandler("Invalid password", 400));
       }
+
+      // If user and password are valid, send the token
+      sendToken(user, 200, res);
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }
