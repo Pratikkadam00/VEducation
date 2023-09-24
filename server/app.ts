@@ -7,7 +7,7 @@ import { ErrorMiddlewareHandler } from "./middleware/error";
 import userRouter from "./routes/user.route";
 
 //body parser
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 
 //cookie parser
 app.use(cookieParser());
