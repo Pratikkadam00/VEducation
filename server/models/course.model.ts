@@ -34,7 +34,7 @@ interface ICourseData extends Document {
   questions: IComment[];
 }
 
-//interface for course which is main thing here
+//interface for course which is main thing here (Course Model)
 interface ICourse extends Document {
   name: string;
   description: string;
@@ -51,3 +51,13 @@ interface ICourse extends Document {
   ratings?: number;
   purchased?: number;
 }
+
+// Review Schema
+const reviewSchema = new Schema<IReview>({
+  user: Object,
+  rating: {
+    type: Number,
+    default: 0,
+  },
+  comment: String,
+});
