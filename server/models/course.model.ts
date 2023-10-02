@@ -89,3 +89,32 @@ const courseDataSchema = new Schema<ICourseData>({
   suggestion: String,
   questions: [commentSchema],
 });
+
+//course schema
+const courseSchema = new Schema<ICourse>({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  estimatedPrice: {
+    type: Number,
+  },
+  thumbnail: {
+    public_id: {
+      required: true,
+      type: String,
+    },
+    url: {
+      required: true,
+      type: String,
+    },
+  },
+});
