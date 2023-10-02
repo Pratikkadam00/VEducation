@@ -1,7 +1,6 @@
 import express from "express";
 import {
   activateUser,
-  authorizeRoles,
   getUserInfo,
   logOutUser,
   loginUser,

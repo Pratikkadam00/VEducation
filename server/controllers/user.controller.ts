@@ -269,12 +269,37 @@ export const getUserInfo = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userId = req.user?._id;
+      const user = await userModel.findById(userId);
       getUserById(userId, res);
+      res.status(200).json({
+        success: true,
+        user,
+      });
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }
   }
 );
+
+// export const getUserInfo = catchAsyncError(
+//   async (req: Request, res: Response, next: NextFunction) => {
+//     try {
+//       const userId = req.user?._id;
+//       const user = await getUserById(userId,res); // Await the asynchronous operation here
+//       if (!user) {
+//         return next(new ErrorHandler("User not found", 404));
+//       }
+
+//       // Send the user data as a JSON response
+//       res.status(200).json({
+//         success: true,
+//         user: user,
+//       });
+//     } catch (error: any) {
+//       return next(new ErrorHandler(error.message, 400));
+//     }
+//   }
+// );
 
 //interface/type for auth body
 interface ISocialAuthBody {
