@@ -117,4 +117,28 @@ const courseSchema = new Schema<ICourse>({
       type: String,
     },
   },
+  tags: {
+    type: String,
+    required: true,
+  },
+  level: {
+    type: String,
+    required: true,
+  },
+  demoUrl: {
+    type: String,
+    required: true,
+  },
+  benefits: [{ title: String }],
+  prerequisites: [{ title: String }],
+  reviews: [reviewSchema],
+  courseData: [courseDataSchema],
+  ratings: {
+    type: Number,
+    default: 0,
+  },
+  purchased: {
+    type: Number,
+    default: 0,
+  },
 });
