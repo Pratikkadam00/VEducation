@@ -4,6 +4,7 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 interface IComment extends Document {
   user: object;
   comment: string;
+  commentReplies?: IComment[];
 }
 
 // user comment
@@ -60,4 +61,31 @@ const reviewSchema = new Schema<IReview>({
     default: 0,
   },
   comment: String,
+});
+
+// Links Schema
+const linkSchema = new Schema<ILink>({
+  title: String,
+  url: String,
+});
+
+//Comment Schema
+const commentSchema = new Schema<IComment>({
+  user: Object,
+  comment: String,
+  commentReplies: [Object],
+});
+
+//course data schema
+const courseDataSchema = new Schema<ICourseData>({
+  videoUrl: String,
+  videoThumbnail: Object,
+  title: String,
+  videoSection: String,
+  description: String,
+  videoLength: Number,
+  videoPlayer: String,
+  links: [linkSchema],
+  suggestion: String,
+  questions: [commentSchema],
 });
