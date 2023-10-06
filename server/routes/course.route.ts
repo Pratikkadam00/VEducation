@@ -1,12 +1,12 @@
 import express from "express";
 const courseRouter = express.Router();
 import { uploadCourse } from "../controllers/course.controller";
-import { isAuthenticated, authorizeRoles } from "../middleware/auth";
+import { isAuthenticated } from "../middleware/auth";
 
 courseRouter.post(
   "/create-course",
   isAuthenticated,
-  authorizeRoles("admin"),
+
   uploadCourse
 );
 

@@ -9,10 +9,6 @@ export const uploadCourse = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data = req.body;
-      const { name, description, price } = req.body;
-      if (!name || !description || !price) {
-        throw new Error("Required fields are missing.");
-      }
       const thumbnail = data.thumbnail;
       if (thumbnail) {
         const myCloud = await cloudinary.v2.uploader.upload(thumbnail, {
